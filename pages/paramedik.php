@@ -1,5 +1,12 @@
 <?php
 include '../config/koneksi.php';
+
+session_start();
+if (isset($_SESSION['alert'])) {
+    $alert = $_SESSION['alert'];
+    echo '<script>alert("' . $alert . '");</script>';
+    unset($_SESSION['alert']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,9 +72,8 @@ include '../config/koneksi.php';
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= date('d/m/Y', strtotime($data['tgl_lahir'])); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                        <?= 
-                                            $data['kategori'] == 'Dokter' ? 'bg-green-100 text-green-800' : 
-                                            ($data['kategori'] == 'Perawat' ? 'bg-purple-100 text-purple-800' : 'bg-yellow-100 text-yellow-800') 
+                                        <?=
+                                        $data['kategori'] == 'Dokter' ? 'bg-green-100 text-green-800' : ($data['kategori'] == 'Perawat' ? 'bg-purple-100 text-purple-800' : 'bg-yellow-100 text-yellow-800')
                                         ?>">
                                         <?= htmlspecialchars($data['kategori']); ?>
                                     </span>
@@ -82,9 +88,7 @@ include '../config/koneksi.php';
                                     <a href="../fitur/edit_paramedik.php?id=<?= $data['id']; ?>" class="text-blue-600 hover:text-blue-900 mr-3">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <a href="../fitur/delete_paramedik.php?id=<?= $data['id']; ?>" class="text-red-600 hover:text-red-900" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                        <i class="fas fa-trash-alt"></i> Hapus
-                                    </a>
+                                    <a href="#" onclick="return confirmDelete(<?= $data['id']; ?>)" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i>Hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -93,7 +97,7 @@ include '../config/koneksi.php';
             </div>
 
             <!-- Empty State -->
-            <?php if(mysqli_num_rows($query) == 0): ?>
+            <?php if (mysqli_num_rows($query) == 0): ?>
                 <div class="text-center py-12">
                     <i class="fas fa-user-md text-4xl text-gray-300 mb-4"></i>
                     <h3 class="text-lg font-medium text-gray-900">Tidak ada data paramedik</h3>
@@ -102,14 +106,14 @@ include '../config/koneksi.php';
             <?php endif; ?>
         </div>
     </div>
-
     <script>
-        // Confirm before delete
-        function confirmDelete(e) {
-            if(!confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                e.preventDefault();
+        function confirmDelete(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus data pasien ini?")) {
+                window.location.href = '../fitur/delete_paramedik.php?id=' + id;
             }
+            return false;
         }
     </script>
 </body>
+
 </html>
