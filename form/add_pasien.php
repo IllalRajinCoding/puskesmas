@@ -19,12 +19,18 @@ if (isset($_POST['nama'])) {
     $stmt = $koneksi->prepare("INSERT INTO pasien (kode, nama, tmp_lahir, tgl_lahir, gender, email, kelurahan_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssi", $kode, $nama, $tmp_lahir, $tgl_lahir, $gender, $email, $kelurahan_id);
 
-    if ($stmt->execute()) {
-        echo '<script>alert("Tambah Data Berhasil"); window.location.href="index.php";</script>';
+    if($nama == ""|| $kode == "" || $tmp_lahir == "" || $tgl_lahir == "" || $gender == "" || $email == "" || $kelurahan_id == "") {
+        echo '<script>alert("Data sudah ada");</script>';
     } else {
-        echo '<script>alert("Tambah Data Gagal: ' . $stmt->error . '")</script>';
+        
+        if ($stmt->execute()) {
+            echo '<script>alert("Tambah Data Berhasil")</script>';
+            echo '<script>window.location.href = "../pages/pasien.php";</script>';
+        } else {
+            echo '<script>alert("Tambah Data Gagal: ' . $stmt->error . '")</script>';
+        }
+        $stmt->close();
     }
-    $stmt->close();
 }
 ?>
 <!DOCTYPE html>
@@ -110,9 +116,6 @@ if (isset($_POST['nama'])) {
             <div class="flex space-x-3 pt-4">
                 <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                     Simpan
-                </button>
-                <button type="reset" class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-                    Reset
                 </button>
                 <button type="button" onclick="window.location.href='../pages/pasien.php'" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                     Kembali
