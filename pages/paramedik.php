@@ -16,17 +16,15 @@ if (isset($_SESSION['alert'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Paramedik</title>
-    <!-- Load Tailwind from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="../src/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
+    <div class="container pb-40 px-4 py-8">
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Header -->
-            <div class="bg-blue-600 px-6 py-4 text-white flex justify-between items-center">
+            <div class="bg-blue-600 px-6  py-4 text-white flex justify-between items-center">
                 <h1 class="text-2xl font-bold">
                     <i class="fas fa-user-md mr-2"></i>Data Paramedik
                 </h1>

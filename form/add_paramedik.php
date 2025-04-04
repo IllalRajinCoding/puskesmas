@@ -36,13 +36,14 @@ if (isset($_POST['nama'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Paramedik</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="../src/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="bg-gray-100">
+<body>
+    <div class="fixed top-0 -z-10 h-full w-full">
+        <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    </div>
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Header -->
@@ -52,7 +53,7 @@ if (isset($_POST['nama'])) {
                         <i class="fas fa-user-plus mr-2"></i>Tambah Data Paramedik
                     </h1>
                     <div class="space-x-2">
-                        <a href="add_unitkerja.php" class="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50 transition">
+                        <a href="add_unit.php" class="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50 transition">
                             <i class="fas fa-plus-circle mr-1"></i>Tambah Unit
                         </a>
                         <a href="../pages/paramedik.php" class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition">
@@ -74,7 +75,7 @@ if (isset($_POST['nama'])) {
                             <input type="text" id="nama" name="nama" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
-                        
+
                         <!-- Gender -->
                         <div class="space-y-2">
                             <label for="gender" class="block text-sm font-medium text-gray-700">
@@ -87,7 +88,7 @@ if (isset($_POST['nama'])) {
                                 <option value="P">Perempuan</option>
                             </select>
                         </div>
-                        
+
                         <!-- Tempat Lahir -->
                         <div class="space-y-2">
                             <label for="tmp_lahir" class="block text-sm font-medium text-gray-700">
@@ -96,7 +97,7 @@ if (isset($_POST['nama'])) {
                             <input type="text" id="tmp_lahir" name="tmp_lahir" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
-                        
+
                         <!-- Tanggal Lahir -->
                         <div class="space-y-2">
                             <label for="tgl_lahir" class="block text-sm font-medium text-gray-700">
@@ -105,7 +106,7 @@ if (isset($_POST['nama'])) {
                             <input type="date" id="tgl_lahir" name="tgl_lahir" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
-                        
+
                         <!-- Kategori -->
                         <div class="space-y-2">
                             <label for="kategori" class="block text-sm font-medium text-gray-700">
@@ -119,7 +120,7 @@ if (isset($_POST['nama'])) {
                                 <option value="Bidan">Bidan</option>
                             </select>
                         </div>
-                        
+
                         <!-- Telpon -->
                         <div class="space-y-2">
                             <label for="telpon" class="block text-sm font-medium text-gray-700">
@@ -129,7 +130,7 @@ if (isset($_POST['nama'])) {
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                 pattern="[0-9]{10,13}" title="Masukkan nomor telepon yang valid (10-13 digit)">
                         </div>
-                        
+
                         <!-- Alamat -->
                         <div class="md:col-span-2 space-y-2">
                             <label for="alamat" class="block text-sm font-medium text-gray-700">
@@ -138,7 +139,7 @@ if (isset($_POST['nama'])) {
                             <textarea name="alamat" id="alamat" rows="3" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
                         </div>
-                        
+
                         <!-- Unit Kerja -->
                         <div class="md:col-span-2 space-y-2">
                             <label for="unitkerja_id" class="block text-sm font-medium text-gray-700">
@@ -156,13 +157,9 @@ if (isset($_POST['nama'])) {
                             </select>
                         </div>
                     </div>
-                    
+
                     <!-- Action Buttons -->
                     <div class="flex justify-end space-x-4 pt-4">
-                        <button type="button" onclick="window.location.href='../pages/paramedik.php'"
-                            class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                            <i class="fas fa-times mr-2"></i>Batal
-                        </button>
                         <button type="submit"
                             class="px-6 py-2 border border-transparent rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                             <i class="fas fa-save mr-2"></i>Simpan Data
@@ -173,4 +170,5 @@ if (isset($_POST['nama'])) {
         </div>
     </div>
 </body>
+
 </html>
