@@ -11,35 +11,30 @@ if (isset($_SESSION['alert'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Data Pasien</title>
+    <title>Data Pasien</title>
     <link rel="stylesheet" href="../src/output.css">
-    <script>
-        function confirmDelete(id) {
-            if (confirm("Apakah Anda yakin ingin menghapus data pasien ini?")) {
-                window.location.href = '../fitur/delete_pasien.php?idk=' + id;
-            }
-            return false;
-        }
-    </script>
 </head>
 
-<body class="bg-gray-50 p-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-gray-800">Data Pasien</h2>
-            <a href="../form/add_pasien.php" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300">
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">Data Pasien</h1>
+            <a href="../form/add_pasien.php" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                 Tambah Pasien
             </a>
         </div>
+    </nav>
 
-        <div class="bg-white rounded-lg shadow overflow-hidden">
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode</th>
@@ -60,22 +55,20 @@ if (isset($_SESSION['alert'])) {
                         $no = 1;
                         while ($data = mysqli_fetch_assoc($query)) {
                         ?>
-                            <tr class="hover:bg-gray-50">
+                            <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= $no++; ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($data['kode']); ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= htmlspecialchars($data['nama']); ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['kode']); ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['nama']); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['tmp_lahir']); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= date('d-m-Y', strtotime($data['tgl_lahir'])); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?= $data['gender'] == 'L' ? 'bg-blue-100 text-blue-800' : 'bg-pink-100 text-pink-800' ?>">
-                                        <?= $data['gender'] == 'L' ? 'Laki-laki' : 'Perempuan'; ?>
-                                    </span>
+                                    <?= $data['gender'] == 'L' ? 'Laki-laki' : 'Perempuan'; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['email']); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['nama_kelurahan'] ?? 'Tidak ada'); ?></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a href="../fitur/edit_pasien.php?id=<?= $data['id']; ?>" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                                    <a href="#" onclick="return confirmDelete(<?= $data['id']; ?>)" class="text-red-600 hover:text-red-900">Hapus</a>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <a href="../fitur/edit_pasien.php?id=<?= $data['id']; ?>" class="text-blue-500 hover:text-blue-700 mr-3">Edit</a>
+                                    <a href="#" onclick="return confirmDelete(<?= $data['id']; ?>)" class="text-red-500 hover:text-red-700">Hapus</a>
                                 </td>
                             </tr>
                         <?php
@@ -85,6 +78,16 @@ if (isset($_SESSION['alert'])) {
                 </table>
             </div>
         </div>
-    </div>
+    </main>
+
+    <script>
+        function confirmDelete(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus data pasien ini?")) {
+                window.location.href = '../fitur/delete_pasien.php?idk=' + id;
+            }
+            return false;
+        }
+    </script>
 </body>
+
 </html>
