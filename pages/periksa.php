@@ -1,6 +1,13 @@
 <?php
 include '../config/koneksi.php';
 
+session_start();
+if (isset($_SESSION['alert'])) {
+    $alert = $_SESSION['alert'];
+    echo '<script>alert("' . $alert . '");</script>';
+    unset($_SESSION['alert']);
+}
+
 // Inisialisasi pesan sukses/gagal
 $message = '';
 
@@ -105,8 +112,8 @@ if (isset($_SESSION['success_message'])) {
                                 <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($data['keterangan']); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><?= htmlspecialchars($data['nama_dokter'] ?? '-'); ?></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <a href="edit_periksa.php?id=<?= $data['id'] ?>" class="text-blue-500 hover:text-blue-700 mr-2">Edit</a>
-                                    <a href="delete_periksa.php?id=<?= $data['id'] ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus?')" class="text-red-500 hover:text-red-700">Hapus</a>
+                                    <a href="../fitur/edit_periksa.php?id=<?= $data['id'] ?>" class="text-blue-500 hover:text-blue-700 mr-2">Edit</a>
+                                    <a href="../fitur/delete_periksa.php?id=<?= $data['id'] ?>" onclick="return confirmDelete(<?php $data['id'];?>)" class="text-red-500 hover:text-red-700">Hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -194,9 +201,22 @@ if (isset($_SESSION['success_message'])) {
                         class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                         Tambah Data
                     </button>
+                    <button type="button" onclick="window.location.href='../dashboard.php'"
+                        class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                        Kembali
+                    </button>
                 </div>
             </form>
         </div>
     </main>
+    <script>
+        const confirmDelete =(id) => {
+            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+                window.location.href = `../fitur/delete_periksa.php?id=${id}`;
+            } else {
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
