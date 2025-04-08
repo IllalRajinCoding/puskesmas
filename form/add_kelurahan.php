@@ -4,10 +4,10 @@ include '../config/koneksi.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $nama = $_POST['nama_kelurahan'];
-    
+
     $stmt = $koneksi->prepare("INSERT INTO kelurahan(id, nama_kelurahan) VALUES (?, ?)");
     $stmt->bind_param("ss", $id, $nama);
-    
+
     if ($stmt->execute()) {
         echo '<script>alert("Data Berhasil Ditambahkan"); window.location.href = window.location.href;</script>';
     } else {
@@ -19,12 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Kelurahan</title>
     <link rel="stylesheet" href="../src/output.css">
 </head>
+
 <body class="bg-gray-100 font-sans">
     <nav class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4">
@@ -66,27 +68,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <label for="id" class="block text-sm font-medium text-gray-700 mb-1">ID (Kodepos)</label>
                     <input type="text" name="id" id="id" pattern="[0-9]{5}" maxlength="5"
-                           class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                           title="Harus 5 digit angka" required>
+                        class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        title="Harus 5 digit angka" required>
                 </div>
                 <div>
                     <label for="nama_kelurahan" class="block text-sm font-medium text-gray-700 mb-1">Nama Kelurahan</label>
                     <input type="text" name="nama_kelurahan" id="nama_kelurahan"
-                           class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                           required>
+                        class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button type="submit" 
-                            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                         Submit
                     </button>
-                    <button type="button" onclick="window.location.href='add_pasien.php'"
-                            class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
-                        Halaman Sebelumnya
+                    <button type="button" onclick="window.location.href='../pages/pasien.php'"
+                        class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                        Kembali
                     </button>
                 </div>
             </form>
         </div>
     </main>
 </body>
+
 </html>

@@ -2,8 +2,8 @@
 
 include '../config/koneksi.php';
 
-if (isset($_GET['id']) &&  is_numeric($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['idk']) &&  is_numeric($_GET['idk'])) {
+    $id = $_GET['idk'];
 
     $stmt = $koneksi->prepare("DELETE FROM paramedik WHERE id = ?");
     $stmt->bind_param("i", $id);

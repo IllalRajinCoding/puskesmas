@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                         class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                         Tambah Unit
                     </button>
-                    <button type="button" onclick="window.location.href='add_paramedik.php'" 
+                    <button type="button" onclick="window.location.href='../pages/paramedik.php'" 
                         class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                         Kembali
                     </button>

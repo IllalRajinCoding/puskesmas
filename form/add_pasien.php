@@ -1,37 +1,37 @@
-<?php
-include '../config/koneksi.php';
+<!-- <?php
+// include '../config/koneksi.php';
 
-if (isset($_POST['nama'])) {
-    $kode = $_POST['kode'];
-    $nama = $_POST['nama'];
-    $tmp_lahir = $_POST['tmp_lahir'];
-    $tgl_lahir = $_POST['tgl_lahir'];
-    $gender = $_POST['gender'];
-    $email = $_POST['email'];
-    $kelurahan_id = $_POST['kelurahan_id'];
+// if (isset($_POST['nama'])) {
+//     $kode = $_POST['kode'];
+//     $nama = $_POST['nama'];
+//     $tmp_lahir = $_POST['tmp_lahir'];
+//     $tgl_lahir = $_POST['tgl_lahir'];
+//     $gender = $_POST['gender'];
+//     $email = $_POST['email'];
+//     $kelurahan_id = $_POST['kelurahan_id'];
 
-    // Validasi kelurahan_id
-    if (empty($kelurahan_id)) {
-        die('<script>alert("Silakan pilih kelurahan")</script>');
-    }
+//     // Validasi kelurahan_id
+//     if (empty($kelurahan_id)) {
+//         die('<script>alert("Silakan pilih kelurahan")</script>');
+//     }
 
-    // Gunakan prepared statement untuk mencegah SQL injection
-    $stmt = $koneksi->prepare("INSERT INTO pasien (kode, nama, tmp_lahir, tgl_lahir, gender, email, kelurahan_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssi", $kode, $nama, $tmp_lahir, $tgl_lahir, $gender, $email, $kelurahan_id);
+//     // Gunakan prepared statement untuk mencegah SQL injection
+//     $stmt = $koneksi->prepare("INSERT INTO pasien (kode, nama, tmp_lahir, tgl_lahir, gender, email, kelurahan_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+//     $stmt->bind_param("ssssssi", $kode, $nama, $tmp_lahir, $tgl_lahir, $gender, $email, $kelurahan_id);
 
-    if($nama == ""|| $kode == "" || $tmp_lahir == "" || $tgl_lahir == "" || $gender == "" || $email == "" || $kelurahan_id == "") {
-        echo '<script>alert("Data sudah ada");</script>';
-    } else {
+//     if($nama == ""|| $kode == "" || $tmp_lahir == "" || $tgl_lahir == "" || $gender == "" || $email == "" || $kelurahan_id == "") {
+//         echo '<script>alert("Data sudah ada");</script>';
+//     } else {
         
-        if ($stmt->execute()) {
-            echo '<script>alert("Tambah Data Berhasil")</script>';
-            echo '<script>window.location.href = "../pages/pasien.php";</script>';
-        } else {
-            echo '<script>alert("Tambah Data Gagal: ' . $stmt->error . '")</script>';
-        }
-        $stmt->close();
-    }
-}
+//         if ($stmt->execute()) {
+//             echo '<script>alert("Tambah Data Berhasil")</script>';
+//             echo '<script>window.location.href = "../pages/pasien.php";</script>';
+//         } else {
+//             echo '<script>alert("Tambah Data Gagal: ' . $stmt->error . '")</script>';
+//         }
+//         $stmt->close();
+//     }
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,10 +108,10 @@ if (isset($_POST['nama'])) {
                                 class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="">Pilih kelurahan</option>
                             <?php
-                            $query_kelurahan = mysqli_query($koneksi, "SELECT * FROM kelurahan ORDER BY nama_kelurahan");
-                            while ($data_kelurahan = mysqli_fetch_assoc($query_kelurahan)) {
-                                echo "<option value='" . $data_kelurahan['id'] . "'>" . htmlspecialchars($data_kelurahan['nama_kelurahan']) . "</option>";
-                            }
+                            // $query_kelurahan = mysqli_query($koneksi, "SELECT * FROM kelurahan ORDER BY nama_kelurahan");
+                            // while ($data_kelurahan = mysqli_fetch_assoc($query_kelurahan)) {
+                            //     echo "<option value='" . $data_kelurahan['id'] . "'>" . htmlspecialchars($data_kelurahan['nama_kelurahan']) . "</option>";
+                            // }
                             ?>
                         </select>
                     </div>
@@ -131,4 +131,4 @@ if (isset($_POST['nama'])) {
         </div>
     </main>
 </body>
-</html>
+</html> -->
