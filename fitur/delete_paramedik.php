@@ -2,13 +2,13 @@
 
 include '../config/koneksi.php';
 
-if (isset($_GET['idk']) &&  is_numeric($_GET['idk'])) {
-    $id = $_GET['idk'];
+if (isset($_GET['idg']) &&  is_numeric($_GET['idg'])) {
+    $id = $_GET['idg'];
 
     $stmt = $koneksi->prepare("DELETE FROM paramedik WHERE id = ?");
     $stmt->bind_param("i", $id);
 
-    if($stmt->execute()){
+    if ($stmt->execute()) {
         session_start();
         $_SESSION['alert'] = "Data berhasil dihapus";
     } else {
@@ -23,4 +23,3 @@ if (isset($_GET['idk']) &&  is_numeric($_GET['idk'])) {
 
 header("Location: ../pages/paramedik.php");
 exit();
-?>

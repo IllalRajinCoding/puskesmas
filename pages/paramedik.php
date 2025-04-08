@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
     <script>
         function confirmDelete(id) {
             if (confirm("Apakah Anda yakin ingin menghapus data paramedik ini?")) {
-                window.location.href = '../fitur/delete_paramedik.php?idk=' + id;
+                window.location.href = '../fitur/delete_paramedik.php?idg=' + id;
             }
             return false;
         }
