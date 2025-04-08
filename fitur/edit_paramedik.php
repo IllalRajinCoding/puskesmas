@@ -68,32 +68,18 @@ if (isset($_POST['nama'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($paramedik) ? 'Edit' : 'Tambah' ?> Data Paramedik</title>
-     <link rel="stylesheet" href="../src/output.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/output.css">
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-            <!-- Header -->
-            <div class="bg-blue-600 px-6 py-4 text-white">
-                <div class="flex justify-between items-center">
-                    <h1 class="text-2xl font-bold">
-                        <i class="fas fa-user-md mr-2"></i><?= isset($paramedik) ? 'Edit' : 'Tambah' ?> Data Paramedik
-                    </h1>
-                    <div class="space-x-2">
-                        <a href="add_unitkerja.php" class="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50 transition">
-                            <i class="fas fa-plus-circle mr-1"></i>Tambah Unit
-                        </a>
-                        <a href="../pages/paramedik.php" class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition">
-                            <i class="fas fa-arrow-left mr-1"></i>Kembali
-                        </a>
-                    </div>
-                </div>
-            </div>
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold text-gray-800"><?= isset($paramedik) ? 'Edit' : 'Tambah' ?> Data Paramedik</h1>
+        </div>
+    </nav>
 
-            <!-- Form -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-6">
                 <form action="" method="POST" class="space-y-6">
                     <?php if (isset($paramedik)): ?>
@@ -102,22 +88,18 @@ if (isset($_POST['nama'])) {
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Nama -->
-                        <div class="space-y-2">
-                            <label for="nama" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-user text-blue-500 mr-1"></i>Nama Lengkap
-                            </label>
+                        <div>
+                            <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
                             <input type="text" id="nama" name="nama" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value="<?= isset($paramedik) ? htmlspecialchars($paramedik['nama']) : '' ?>">
                         </div>
                         
                         <!-- Gender -->
-                        <div class="space-y-2">
-                            <label for="gender" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-venus-mars text-blue-500 mr-1"></i>Jenis Kelamin
-                            </label>
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Jenis Kelamin</label>
                             <select name="gender" id="gender" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">Pilih Jenis Kelamin</option>
                                 <option value="L" <?= (isset($paramedik) && $paramedik['gender'] == 'L') ? 'selected' : '' ?>>Laki-Laki</option>
                                 <option value="P" <?= (isset($paramedik) && $paramedik['gender'] == 'P') ? 'selected' : '' ?>>Perempuan</option>
@@ -125,32 +107,26 @@ if (isset($_POST['nama'])) {
                         </div>
                         
                         <!-- Tempat Lahir -->
-                        <div class="space-y-2">
-                            <label for="tmp_lahir" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-map-marker-alt text-blue-500 mr-1"></i>Tempat Lahir
-                            </label>
+                        <div>
+                            <label for="tmp_lahir" class="block text-sm font-medium text-gray-700 mb-1">Tempat Lahir</label>
                             <input type="text" id="tmp_lahir" name="tmp_lahir" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value="<?= isset($paramedik) ? htmlspecialchars($paramedik['tmp_lahir']) : '' ?>">
                         </div>
                         
                         <!-- Tanggal Lahir -->
-                        <div class="space-y-2">
-                            <label for="tgl_lahir" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-calendar-day text-blue-500 mr-1"></i>Tanggal Lahir
-                            </label>
+                        <div>
+                            <label for="tgl_lahir" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Lahir</label>
                             <input type="date" id="tgl_lahir" name="tgl_lahir" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value="<?= isset($paramedik) ? htmlspecialchars($paramedik['tgl_lahir']) : '' ?>">
                         </div>
                         
                         <!-- Kategori -->
-                        <div class="space-y-2">
-                            <label for="kategori" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-briefcase-medical text-blue-500 mr-1"></i>Kategori
-                            </label>
+                        <div>
+                            <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
                             <select name="kategori" id="kategori" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">Pilih Kategori</option>
                                 <option value="Dokter" <?= (isset($paramedik) && $paramedik['kategori'] == 'Dokter') ? 'selected' : '' ?>>Dokter</option>
                                 <option value="Perawat" <?= (isset($paramedik) && $paramedik['kategori'] == 'Perawat') ? 'selected' : '' ?>>Perawat</option>
@@ -159,32 +135,26 @@ if (isset($_POST['nama'])) {
                         </div>
                         
                         <!-- Telpon -->
-                        <div class="space-y-2">
-                            <label for="telpon" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-phone text-blue-500 mr-1"></i>Nomor Telepon
-                            </label>
+                        <div>
+                            <label for="telpon" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
                             <input type="tel" id="telpon" name="telpon" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 pattern="[0-9]{10,13}" title="Masukkan nomor telepon yang valid (10-13 digit)"
                                 value="<?= isset($paramedik) ? htmlspecialchars($paramedik['telpon']) : '' ?>">
                         </div>
                         
                         <!-- Alamat -->
-                        <div class="md:col-span-2 space-y-2">
-                            <label for="alamat" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-map-marked-alt text-blue-500 mr-1"></i>Alamat Lengkap
-                            </label>
+                        <div class="md:col-span-2">
+                            <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat Lengkap</label>
                             <textarea name="alamat" id="alamat" rows="3" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"><?= isset($paramedik) ? htmlspecialchars($paramedik['alamat']) : '' ?></textarea>
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"><?= isset($paramedik) ? htmlspecialchars($paramedik['alamat']) : '' ?></textarea>
                         </div>
                         
                         <!-- Unit Kerja -->
-                        <div class="md:col-span-2 space-y-2">
-                            <label for="unitkerja_id" class="block text-sm font-medium text-gray-700">
-                                <i class="fas fa-clinic-medical text-blue-500 mr-1"></i>Unit Kerja
-                            </label>
+                        <div class="md:col-span-2">
+                            <label for="unitkerja_id" class="block text-sm font-medium text-gray-700 mb-1">Unit Kerja</label>
                             <select name="unitkerja_id" id="unitkerja_id" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">Pilih Unit Kerja</option>
                                 <?php
                                 $query = mysqli_query($koneksi, "SELECT * FROM unit_kerja");
@@ -198,19 +168,19 @@ if (isset($_POST['nama'])) {
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-4 pt-4">
-                        <button type="button" onclick="window.location.href='../pages/paramedik.php'"
-                            class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                            <i class="fas fa-times mr-2"></i>Batal
-                        </button>
+                    <div class="flex items-center space-x-4 pt-4">
                         <button type="submit"
-                            class="px-6 py-2 border border-transparent rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                            <i class="fas fa-save mr-2"></i><?= isset($paramedik) ? 'Update' : 'Simpan' ?> Data
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                            <?= isset($paramedik) ? 'Update' : 'Simpan' ?> Data
                         </button>
+                        <a href="../pages/paramedik.php"
+                            class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+                            Kembali
+                        </a>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
